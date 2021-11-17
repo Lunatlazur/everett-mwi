@@ -1,0 +1,11 @@
+{
+  "name": "everett-mwi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/Lunatlazur/everett-mwi.git",
+  "author": "aoitaku <aoitaku@gmail.com>",
+  "license": "Zlib",
+  "dependencies": {
+    "peggy": "^1.2.0"
+  }
+}
