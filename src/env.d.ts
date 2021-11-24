@@ -6,3 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+declare interface Window {
+  env: {
+    platform: string
+    writeToClipboard (text: string): void
+  }
+}

@@ -172,14 +172,8 @@ async function copy () {
   if (typeof value !== 'string') {
     return
   }
-  const type = 'text/plain'
   try {
-    const data = [
-      new ClipboardItem({
-        [type]: new Blob([value], { type }),
-      }),
-    ]
-    await navigator.clipboard.write(data)
+    window.env.writeToClipboard(value)
   } catch (e) {
     console.error(e)
   }

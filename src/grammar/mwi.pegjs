@@ -570,12 +570,34 @@ __End__
 End
   = CommandPrefix "end"
 
+Break
+  = CommandPrefix "break"
+
+EraseEvent
+  = CommandPrefix "eraseEvent"
+
+GetOnOffVehicle
+  = CommandPrefix "getOnOffVehicle"
+
+GatherFollowers
+  = CommandPrefix "gatherFollowers"
+
+FadeoutScreen
+  = CommandPrefix "fadeoutScreen"
+
+FadeinScreen
+  = CommandPrefix "fadeinScreen"
+
+
 CommandStatement
   = __* !(If / ShowChoices / ProcessBattle / When / Else / Loop / End)
-    CommandPrefix command:$Char+
+    command:$Command
     __* {
       return [{ command }]
     }
+
+Command
+  = CommandPrefix @Char+
 
 CommandPrefix
   = At {}
