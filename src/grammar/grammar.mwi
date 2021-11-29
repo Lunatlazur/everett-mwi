@@ -1,0 +1,643 @@
+;on または off
+@if switch #1 on
+@end
+
+;on または off
+@if switch #2 off
+@end
+
+;符号付き整数
+@if variable #1 == 1
+@end
+
+;変数
+@if variable #2 == #3
+@end
+
+;符号付き整数
+@if variable #3 > 1
+@end
+
+;符号付き整数
+@if variable #3 >= 1
+@end
+
+;符号付き整数
+@if variable #3 < 1
+@end
+
+;符号付き整数
+@if variable #3 <= 1
+@end
+
+;符号付き整数
+@if variable #3 != -1
+@end
+
+;on または off
+@if selfSwitch A on
+@end
+
+;on または off
+@if selfSwitch B off
+@end
+
+;分:秒
+@if timer >= 1:59
+@end
+
+;符号なし整数
+@if timer <= 60
+@end
+
+@if actor #1 exists
+@end
+
+@if actor #1 name ハロルド
+@end
+
+@if actor #1 job #1
+@end
+
+@if actor #1 skill #1
+@end
+
+@if actor #1 weapon #1
+@end
+
+@if actor #1 armor #1
+@end
+
+@if actor #1 state #1
+@end
+
+@if enemy #1 appeared
+@end
+
+@if emeny #1 state #1
+@end
+
+;符号なし整数
+@if money >= 100
+@end
+
+;符号なし整数
+@if money <= 100
+@end
+
+;符号なし整数
+@if money < 10
+@end
+
+@if inventory item #1
+@end
+
+@if inventory weapon #1 includingEquip
+@end
+
+@if inventory armor #1 includingEquip
+@end
+
+@if direction player up
+@end
+
+@if direction this left
+@end
+
+@if direction event #1 down
+@end
+
+@if button ok pressed
+@end
+
+@if button cancel triggered
+@end
+
+@if button down repeated
+@end
+
+@if vehicle boat
+@end
+
+@if vehicle ship
+@end
+
+@if vehicle airship
+@end
+
+@if ``
+@end
+
+;101
+@showText >>>
+
+<<<
+
+これは文章
+
+  >>>
+  ここも文章
+    インデントできる
+
+  空行も認識される
+  <<<
+
+;105
+@showScrollText speed=0 fastforward >>>
+
+<<<
+
+@break
+
+@callCommonEvent #1
+
+*label
+
+@goto *label
+
+@switch #1 on
+
+@switch #1 ~ #2 off
+
+@variable #1 = 1
+
+@variable #2 ~ #3 += rand 1 ~ 10
+
+@variable #4 -= count item #1
+
+@variable #5 *= count weapon #1
+
+@variable #6 /= count armor #1
+
+@variable #7 %= level actor #1
+
+@variable #8 = exp actor #1
+
+@variable #8 = hp actor #1
+
+@variable #8 = mp actor #1
+
+@variable #8 = mhp actor #1
+
+@variable #8 = mmp actor #1
+
+@variable #8 = atk actor #1
+
+@variable #8 = def actor #1
+
+@variable #8 = mat actor #1
+
+@variable #8 = mdf actor #1
+
+@variable #8 = agi actor #1
+
+@variable #8 = luk actor #1
+
+@variable #8 = tp actor #1
+
+@variable #9 = hp enemyMember #1
+
+@variable #9 = mp enemyMember #1
+
+@variable #9 = mhp enemyMember #1
+
+@variable #9 = mmp enemyMember #1
+
+@variable #9 = atk enemyMember #1
+
+@variable #9 = def enemyMember #1
+
+@variable #9 = mat enemyMember #1
+
+@variable #9 = mdf enemyMember #1
+
+@variable #9 = agi enemyMember #1
+
+@variable #9 = luk enemyMember #1
+
+@variable #9 = tp enemyMember #1
+
+@variable #10 = mapX player
+
+@variable #10 = mapY this
+
+@variable #10 = mapX event #1
+
+@variable #10 = actorID partyMember #1
+
+@variable #10 = mapID
+
+@variable #10 = count partyMember
+
+@variable #10 = money
+
+@variable #10 = step
+
+@variable #10 = playtime
+
+@variable #10 = timer
+
+@variable #10 = count save
+
+@variable #10 = count battle
+
+@variable #10 = count win
+
+@variable #10 = count loss
+
+@variable #10 = count escape
+
+@variable #10 = last skill
+
+@variable #10 = last item
+
+@variable #10 = last actor
+
+@variable #10 = last enemy
+
+@variable #10 = lastTarget actor
+
+@variable #10 = lastTarget enemy
+
+@variable #11 = ``
+
+;103
+@variable #1 = inputNumber digits=8
+
+;104
+@variable #1 = selectNormalItem
+
+@variable #1 = selectImportantItem
+
+@variable #1 = selectSecretItemA
+
+@variable #1 = selectSecretItemB
+
+;285
+@variable #1 = terrainTag [0 1]
+
+@variable #1 = eventID [#1 #2]
+
+@variable #1 = groundTileID player
+
+@variable #1 = lowerMiddleTileID this
+
+@variable #1 = upperMiddleTileID event #1
+
+@variable #1 = topTileID [0 1]
+
+@variable #1 = regionID [0 1]
+
+
+@selfSwitch A on
+
+@selfSwitch B off
+
+@startTimer 60
+
+@stopTimer
+
+@gainMoney 100
+
+@loseMoney #1
+
+@gainItem #1 1
+
+@loseItem #2 #1
+
+@gainWeapon #1 1
+@loseWeapon #2 #1 includingEquip
+
+@gainArmor #1 1
+@loseArmor #2 #1 includingEquip
+
+@joinParty actor #1
+
+@leaveParty actor #2 init
+
+@setBattleBGM BGM名 volume=90 pitch=100 pan=0
+
+@setVictoryME ME名 volume=90 pitch=100 pan=0
+
+@enableSaveAccess
+
+@disableSaveAccess
+
+@enableMenuAccess
+
+@disableMenuAccess
+
+@enableEncounter
+
+@disableEncounter
+
+@enableFormationAccess
+
+@disableFormationAccess
+
+@setWindowColor [255 255 0]
+
+@setDefeatME MEファイル volume=90 pitch=100 pan=0
+
+@setVehicleBGM boat BGMファイル volume=90 pitch=100 pan=0
+
+@setVehicleBGM ship なし
+
+@setVehicleBGM airship BGMファイル volume=90 pitch=100 pan=0
+
+@transfer map #1 [0 1]
+
+@transfer byVariable #1 [#1 #2] direction=up fade=white
+
+@transfer byVariable #1 [#1 #2] direction=down fade=black
+
+@placeVehicle boat map #1 [0 1]
+
+@placeVehicle ship byVariable #1 [#1 #2]
+
+@placeVehicle airship map #1 [0 1]
+
+@placeEvent this map #1 [0 1]
+
+@placeEvent #1 byVariable #1 [#1 #2]
+
+@scrollMap up distance=1 speed=1
+
+@moveRoute player
+@end
+
+@moveRoute this
+@end
+
+@moveRoute event #1
+@end
+
+@getOnOffVehicle
+
+@transparent on
+
+@transparent off
+
+@showAnimation #1 player wait
+
+@showAnimation #2 this
+
+@showAnimation #3 event #1
+
+@showBaloon exclamation player
+
+@showBaloon question this
+
+@showBaloon question event #1
+
+@eraseEvent
+
+@displayFollowers
+
+@hideFollowers
+
+@gatherFollowers
+
+@fadeoutScreen
+
+@fadeinScreen
+
+@tintScreen [255 255 255 128] 60f wait
+
+@tintScreen [255 255 255 128] 60f
+
+@flashScreen [255 255 255 255] 60f wait
+
+@flashScreen [255 255 255 255] 60f
+
+@shakeScreen power=1 speed=1 60f wait
+
+@shakeScreen power=4 speed=6 60f
+
+@wait 60f
+
+@showPicture (
+  #1
+  topLeft
+  [0 1]
+  scale=[100% 100%]
+  opacity=255
+  blend=normal
+  wait
+)
+
+@showPicture #1 center [#1 #2] scale=[100% 100%] opacity=255 blend=add wait
+
+@movePicture #1 topLeft [0 1] scale=[100% 100%] opacity=255 blend=multiply 60f wait
+
+@movePicture #1 center [#1 #2] scale=[100% 100%] opacity=255 blend=screen wait
+
+@rotatePicture #1 speed=1
+
+@tintPicture #1 [255 255 255 128] 60f wait
+
+@erasePicture #1
+
+@weather none
+
+@weather rain power=1 60f
+
+@weather snow power=1 60f wait
+
+@weather storm power=1 60f
+
+@playBGM BGMファイル volume=90 pitch=100 pan=0
+
+@playSE SEファイル volume=90 pitch=100 pan=0
+
+@playBGS BGSファイル volume=90 pitch=100 pan=0
+
+@playME MEファイル volume=90 pitch=100 pan=0
+
+@playMovie 動画ファイル
+
+@setBackground 画像ファイル loopX=0
+
+@setBackground 画像ファイル loopY=0
+
+@setBackground 画像ファイル loopX=0 loopY=0
+
+@fadeoutBGM
+
+@fadeoutBGS
+
+@saveBGM
+
+@resumeBGM
+
+@stopSE
+
+@displayMapName
+
+@hideMapName
+
+@quitBattle
+
+@quitEvent
+
+@openMenuScreen
+
+@gameOver
+
+@openSaveScreen
+
+@returnToTitle
+
+@processBattle enemyGroup #1
+@end
+
+@processBattle enemyGroup byVariable #1
+@end
+
+@processBattle random
+@end
+
+@processShop onlyPurchase
+@lineUp item #1 price=100
+@lineUp weapon #1
+@lineUp armor #1
+@end
+
+@inputName actor #1 digits=8
+
+@gainHP actor #1 1
+
+@loseHP actor byVariable #1 #2 allowDead
+
+@gainHP allPartyMembers 1
+
+@gainMP actor #1 1
+
+@loseMP actor byVariable #1 #2
+
+@gainMP allPartyMembers 1
+
+@gainTP actor #1 1
+
+@loseTP actor byVariable #1 #2
+
+@gainTP allPartyMembers 1
+
+@addState actor #1 state #1
+
+@removeState actor byVariable #1 state #1
+
+@addState allPartyMembers state #1
+
+@recoverAll actor #1
+
+@recoverAll actor byVariable #1
+
+@recoverAll allPartyMembers
+
+
+@gainHP enemyMember #1 1
+
+@loseHP allEnemyMembers #2 allowDead
+
+@gainMP enemyMember #1 1
+
+@loseMP allEnemyMembers #2
+
+@addState enemyMember #1 state #1
+
+@removeState allEnemyMembers state #1
+
+@recoverAll enemyMember #1
+
+@recoverAll allEnemyMembers
+
+
+@gainExp actor #1 1 showLevelUp
+
+@loseExp actor byVariable #1 #1
+
+@gainExp allPartyMembers 1
+
+@gainLevel actor #1 1 showLevelUp
+
+@loseLevel actor byVariable #1 #1
+
+@gainLevel allPartyMembers 1
+
+@gainParameter actor #1 mhp 1
+
+@loseParameter actor byVariable #1 mmp 1
+
+@gainParameter allPartyMembers atk 1
+
+@gainParameter actor #1 def 1
+
+@gainParameter actor #1 mat 1
+
+@gainParameter actor #1 mdf 1
+
+@gainParameter actor #1 agi 1
+
+@gainParameter actor #1 luk 1
+
+@gainSkill actor #1 skill #1
+
+@loseSkill actor byVariable #1 skill #1
+
+@gainSkill allPartyMembers skill #1
+
+@setActorEquip #1 type 1 #1
+
+@setActorEquip #1 type 2 none
+
+@setActorName #1 ハロルド
+
+@setActorJob #1 job #1
+
+@setActorJob #1 job #2 keepLevel
+
+@setActorImage #1 face=Actor1 #1 character=Actor1 #1 battler=Actor1
+
+@setVehicleImage boat Vehicle1 #1
+
+@setVehicleImage ship Vehicle1 #2
+
+@setVehicleImage airship Vehicle2 #1
+
+@setActorNickname #1 勇者
+
+@setActorProfile #1 >>>
+  勇者と
+  呼ばれる
+<<<
+
+@appearEnemyMember #1
+
+@transformEnemyMember #1 enemy #1
+
+@showBattleAnimation #1 enemyMember #1
+
+@showBattleAnimation #1 allEnemies
+
+@forceAction actor #1 skill #1 lastTarget
+
+@forceAction enemyMember #1 skill #1 random
+
+@forceAction actor #1 skill #1 target #1
+
+@script >>>
+  const hoge = $gameVariables.value(1);
+<<<
+
+@import (
+  テキストピクチャの設定=textPicture
+) from command/TextPicture
+@textPicture (
+  テキスト=>>>
+    aiueo
+    abcde
+  <<<
+)
+
+%showTachie
