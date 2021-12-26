@@ -25,7 +25,7 @@ Program
     }
 
 __Statement__
-  = __* @Statement? __*
+  = __* @Statement? __* Comment? __*
 
 Statement
   = IfStatement
@@ -33,6 +33,7 @@ Statement
   / LoopStatement
   / ProcessBattleStatement
   / CommandStatement
+  / Heredoc
 
 IfStatement
   = ifBlock:ConditionIfBlock
@@ -145,7 +146,7 @@ TimerConditionOperatorParameter
 TimerCondition
   = "timer" __*
     operator:TimerConditionOperatorParameter __*
-    right:Int __* {
+    right:(Time / Int) __* {
       return [3, right, operator]
     }
 
@@ -165,7 +166,7 @@ ActorConditionParameter
 ActorCondition
   = "actor" __+
     left:Id __+
-    "inParty" __* {
+    "exists" __* {
       return [4, left, 0]
     }
   / "actor" __+
@@ -181,12 +182,12 @@ ActorCondition
     }
 
 EnemyCondition
-  = "enemy" __+
+  = "enemyMember" __+
     left:Id __+
     "appeared" __* {
       return [5, left, 0]
     }
-  / "enemy" __+
+  / "enemyMember" __+
     left:Id __+
     "state" __+
     right:Id __* {
@@ -224,9 +225,9 @@ MoneyCondition
     }
 
 OwnedItemCondition
-  = "item" __+
-    left:Id __+
-    "inInventory" __* {
+  = "inventory" __+
+    "item" __+
+    left:Id __* {
       return [8, left]
     }
 
@@ -244,8 +245,8 @@ OwnedEquipmentConditionOptionParameter
     }
 
 OwnedEquipmentCondition
-  = left:OwnedEquipmentConditionEquipmentParameter __+
-    "inInventory"
+  = "inventory" __+
+    left:OwnedEquipmentConditionEquipmentParameter
     option:OwnedEquipmentConditionOptionParameter __* {
       return [...left, option]
     }
@@ -597,13 +598,19 @@ CommandStatement
     }
 
 Command
-  = CommandPrefix @Char+
+  = CommandPrefix @Char+ __* Heredoc?
 
 CommandPrefix
   = At {}
 
 MessageCharacterPrefix
   = GreaterThan __* {}
+
+Comment
+  = !Backslash CommentPrefix (![\r\n] .)* {}
+
+CommentPrefix
+  = Semicolon
 
 MessageWindowParameter
   = background:MessageWindowBackground __+
@@ -690,10 +697,12 @@ ButtonKey
 // string literal
 Script
   = QX @$BackQuotedChar* QX
+  / Heredoc
 
 String
   = QQ @$DoubleQuotedChar* QQ
   / Q @$QuotedChar* Q
+  / Heredoc
 
 DoubleQuotedChar
   = !(DoubleQuote / Backslash) @.
@@ -720,6 +729,11 @@ EscapeSequence
     / "t" { return "\t" }
     / "v" { return "\x0B" }
     )
+
+Heredoc
+  = ">>>" __* NL
+    (!(__* "<<<") (![\r\n] .)* NL)*
+    __* "<<<" __*
 
 // number literal
 RawDigit
@@ -757,6 +771,11 @@ Real "real number"
   = Minus? RawReal {
       return Number(text())
     }
+
+Time
+  = min:UnsignedInt Colon sec:[0-5][0-9] {
+    return Number(min) * 60 + Number(sec)
+  }
 
 // boolean literal
 Boolean
@@ -810,6 +829,8 @@ Question = "?"
 Tilde = "~"
 BracketOpen = "["
 BracketClose = "]"
+Semicolon = ";"
+Colon = ":"
 
 // whitespace
 __ "whitespace" = [ \t] {}

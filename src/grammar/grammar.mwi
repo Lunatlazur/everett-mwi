@@ -71,10 +71,10 @@
 @if actor #1 state #1
 @end
 
-@if enemy #1 appeared
+@if enemyMember #1 appeared
 @end
 
-@if emeny #1 state #1
+@if enemyMember #1 state #1
 @end
 
 ;符号なし整数
@@ -133,7 +133,7 @@
 
 <<<
 
-これは文章
+;これは文章
 
   >>>
   ここも文章

@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import * as peggy from 'peggy'
 import mwi from '../grammar/mwi.pegjs?raw'
+import grammer from '../grammar/grammar.mwi?raw'
 
 type ParserError = peggy.GrammarError | peggy.parser.SyntaxError
 
@@ -22,114 +23,7 @@ const parser = computed(() => {
   }
 })
 
-const source = ref(`@if switch #1 on
-@end
-
-@if switch #2 off
-@end
-
-@if variable #2 == 1
-@end
-
-@if variable #2 == #3
-@end
-
-@if variable #3 > 1
-@end
-
-@if variable #3 >= 1
-@end
-
-@if variable #3 < 1
-@end
-
-@if variable #3 <= 1
-@end
-
-@if variable #3 != -1
-@end
-
-@if selfSwitch A on
-@end
-
-@if selfSwitch B off
-@end
-
-@if timer <= 60
-@end
-
-@if actor #1 inParty
-@end
-
-@if actor #1 name ハロルド
-@end
-
-@if actor #1 job #1
-@end
-
-@if actor #1 skill #1
-@end
-
-@if actor #1 weapon #1
-@end
-
-@if actor #1 armor #1
-@end
-
-@if actor #1 state #1
-@end
-
-@if enemy #1 appeared
-@end
-
-@if enemy #1 state #1
-@end
-
-@if money >= 100
-@end
-
-@if money <= 100
-@end
-
-@if money < 10
-@end
-
-@if item #1 inInventory
-@end
-
-@if weapon #1 inInventory includingEquip
-@end
-
-@if armor #1 inInventory includingEquip
-@end
-
-@if direction player up
-@end
-
-@if direction this left
-@end
-
-@if direction event #1 down
-@end
-
-@if button ok pressed
-@end
-
-@if button cancel triggered
-@end
-
-@if button down repeated
-@end
-
-@if vehicle boat
-@end
-
-@if vehicle ship
-@end
-
-@if vehicle airship
-@end
-`)
+const source = ref(grammer)
 
 const result = computed(() => {
   if (typeof parser.value === 'string') {
@@ -239,6 +133,7 @@ async function copy () {
   font-size: 100%;
   margin: 0;
   padding: 1rem;
+  line-height: 1.25;
   white-space: pre-wrap;
   font-family: 'Fira Code', '源ノ角ゴシック', monospace;
 }
